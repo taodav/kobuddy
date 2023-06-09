@@ -23,7 +23,7 @@ def run(args):
 
     mount = get_kobo_mountpoint(label=args.label)
     if mount is None:
-        return
+        raise FileNotFoundError(f"Mount not found for label {args.label}.")
 
     db = mount / '.kobo/KoboReader.sqlite'
     assert db.exists()
